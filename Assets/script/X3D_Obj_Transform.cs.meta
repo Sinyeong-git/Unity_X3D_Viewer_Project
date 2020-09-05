@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 18d654b1207543c48802fe9378c4b2d4
+timeCreated: 18446744011573954816
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Box: {fileID: 1817876446948414, guid: 956dbc4639c5481489a34f2175ba2e59, type: 3}
+  - Cone: {fileID: 1391175532542514, guid: 2b8d7bec446af1d43821c617cecf35c8, type: 3}
+  - Sphere: {fileID: 1884581258959474, guid: 5ae90f0a3af804f419f36c675ebfbcdf, type: 3}
+  - Cylinder: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
