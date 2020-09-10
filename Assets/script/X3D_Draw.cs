@@ -18,14 +18,19 @@ public class X3D_Draw : MonoBehaviour
 
         for (int i = 0; i < X3D_Obj_Transform.Count ; i++) {
 
+            //Obj_Transform 내부에 있는 Shape 리스트 변수화
             List<X3D_Obj_Shape> X3D_Obj_Shape = X3D_Obj_Transform[i].Get_X3D_Obj_Shape();
+
+            //Transfrom 노드를 기준으로 부모 오브젝트 생성
+            GameObject MotherTransfrom = new GameObject();
+            MotherTransfrom.transform.parent = parentGameObject;
+            MotherTransfrom.name = X3D_Obj_Transform[i].Get_def();
+
 
             if (X3D_Obj_Shape != null)
             {
                 for (int j = 0; j < X3D_Obj_Shape.Count; j++)
                 {
-
-                    Debug.Log("coordinate index : " + X3D_Obj_Shape[j].Get_corrdinateIndex());
 
                     //Transform 컴포넌트 값을 바꿔주는 과정
                     if (X3D_Obj_Shape[j].Get_shapeType().Equals("Box") == true)
@@ -44,36 +49,29 @@ public class X3D_Draw : MonoBehaviour
                     //SahpeType == Face
                     else if (X3D_Obj_Shape[j].Get_shapeType().Equals("IndexedFaceSet") == true)
                     {
-
                         //MeshFilter 컴포넌트 가져오기           
                         GameObject shapeGameObject = new GameObject();
 
-                        //자식화
-                        shapeGameObject.transform.parent = parentGameObject;
+                        //부모 Transform에 자식으로 생성
+                        shapeGameObject.transform.parent = MotherTransfrom.transform;
 
-                        //C_DEF의 null 확인
+                        //DEF의 null 확인 후 게임오브젝트 이름 설정
                         if (!string.IsNullOrEmpty(X3D_Obj_Transform[i].Get_def()))
                         {
-                            shapeGameObject.name = X3D_Obj_Transform[i].Get_def();
+                            shapeGameObject.name = X3D_Obj_Transform[i].Get_def()+"_Model";
                         }
-
-                        //자식설정
-                        if (GameObject.Find(X3D_Obj_Transform[i].Get_def()))
+                        else
                         {
-                            Transform Parent = GameObject.Find(X3D_Obj_Transform[i].Get_def()).GetComponent<Transform>();
-                            shapeGameObject.transform.parent = Parent;
+                            shapeGameObject.name = "NoName_Model";
                         }
-
-
 
                         MeshFilter cMeshFilter = shapeGameObject.AddComponent<MeshFilter>();
                         MeshRenderer cMeshRenderer = shapeGameObject.AddComponent<MeshRenderer>();
                         Mesh cMesh = new Mesh();
 
-                        //mesh translation 루트 요소값 적용
+                        //mesh translation 요소값 적용
                         if (X3D_Obj_Transform[i].Get_translation() != null)
                         {
-
                             shapeGameObject.transform.localPosition = new Vector3(
                             System.Convert.ToSingle(X3D_Obj_Transform[i].Get_translation()[0]),
                             System.Convert.ToSingle(X3D_Obj_Transform[i].Get_translation()[1]),
@@ -97,9 +95,6 @@ public class X3D_Draw : MonoBehaviour
                         }
 
 
-                        //cMesh.Clear();
-
-
                         if (X3D_Obj_Shape[j].Get_corrdinatePoint() != null)
                         {
                             //CoordinatePoint 데이터 삽입
@@ -110,7 +105,6 @@ public class X3D_Draw : MonoBehaviour
 
  
                            
-
                         /*
                         //텍스쳐 데이터 삽입 부화 관련 주석, 차후 수정, Nullorempty 관련 처리로 바꿔야 할 것으로 예상
                         if (!string.IsNullOrEmpty(C_imagetexture))
@@ -149,24 +143,21 @@ public class X3D_Draw : MonoBehaviour
                         //텍스쳐 변수 적용
                         Material cMaterial;
                         cMeshFilter.mesh = cMesh;
-                        cMaterial = GameObject.Instantiate(Resources.Load("metal") as Material);
-
+                        cMaterial = Instantiate(Resources.Load("metal") as Material);
 
 
                         //texture 처리 로직 (기본값 metal texture)
                         if (string.IsNullOrEmpty( null ))
                         {
-                            cMaterial = GameObject.Instantiate(Resources.Load("metal") as Material);
+                            cMaterial = Instantiate(Resources.Load("metal") as Material);
                         }
                         else
                         {
-                            cMaterial = GameObject.Instantiate(Resources.Load("metal") as Material);
+                            cMaterial = Instantiate(Resources.Load("metal") as Material);
                             //cMaterial = GameObject.Instantiate(Resources.Load(C_imagetexture) as Material);                              
                         }
 
                         cMeshRenderer.material = cMaterial;
-
-                        Debug.Log("그리기 완료");
 
                     }
                 }

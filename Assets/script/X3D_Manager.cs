@@ -1,13 +1,16 @@
 ﻿using System.Xml;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.IO;
 
 
 
 
 public class X3D_Manager : MonoBehaviour
 {
+    [Header("파일 이름")]
+    [SerializeField] string FileName = "Meetingroom_withfloor";
+
     XmlNode XD;
 
     X3D_Search X3D_Search;
@@ -19,8 +22,9 @@ public class X3D_Manager : MonoBehaviour
         XD = null;
 
         X3D_Search = gameObject.AddComponent<X3D_Search>();
+        X3D_Search.Initialize();
 
-        X3D_Draw = new X3D_Draw();
+        X3D_Draw = gameObject.AddComponent<X3D_Draw>();
     }
 
 
@@ -42,18 +46,11 @@ public class X3D_Manager : MonoBehaviour
 
     XmlDocument X3D_Load()
     {
-        string FileName = "Meetingroom_withfloor";
-
-        ////////////////////////===========XML파일명=================/////////////////////
-        TextAsset textAsset = (TextAsset)Resources.Load(FileName);
-
-        Debug.Log("File Name : " + FileName + ".xml");
+        StreamReader sr = new StreamReader("Assets/X3D_File/" + FileName + ".x3d");
 
         //textAsset의 XmlDocumnet화
         XmlDocument xmlDoc = new XmlDocument();
-        xmlDoc.LoadXml(textAsset.text);
-
-        //firstCreate();
+        xmlDoc.LoadXml(sr.ReadToEnd());  
         return xmlDoc;
     }
 

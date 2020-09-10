@@ -5,11 +5,8 @@ using UnityEngine;
 public class X3D_Obj_Transform 
 {
 
-    //reStruct
-
-    //Shape 리스트
+    //Obj_Shape 리스트
     private List<X3D_Obj_Shape> X3D_Obj_Shape = new List<X3D_Obj_Shape>();
-
 
     //mesh형식 정상화를 위한 변수
     string[] translation;
@@ -19,72 +16,27 @@ public class X3D_Obj_Transform
     string def;
 
 
+    public List<X3D_Obj_Shape> Get_X3D_Obj_Shape() { return X3D_Obj_Shape; }
 
-    public List<X3D_Obj_Shape> Get_X3D_Obj_Shape()
-    {
-        return X3D_Obj_Shape;
-    }
+    public int Get_X3D_Obj_Shape_Count() { return X3D_Obj_Shape.Count; }
 
-    public int Get_X3D_Obj_Shape_Count()
-    {
-        return X3D_Obj_Shape.Count;
-    }
+    public void Set_translation(string[] _input) { translation = _input; }
+    public string[] Get_translation() { return translation; }
 
+    public void Set_scale(string[] _input) { scale = _input; }
+    public string[] Get_scale() { return scale; }
 
-    public void Set_translation(string[] _input)
-    {
-        translation = _input;
-    }
-    public string[] Get_translation()
-    {
-        return translation;
-    }
-
-    public void Set_scale(string[] _input)
-    {
-        scale = _input;
-    }
-    public string[] Get_scale()
-    {
-        return scale;
-    }
+    public void Set_scaleOrientation(string _input) { scaleOrientation = _input; }
+    public string Get_scaleOrientation() { return scaleOrientation; }
 
 
-    public void Set_scaleOrientation(string _input)
-    {
-        scaleOrientation = _input;
-    }
-    public string Get_scaleOrientation()
-    {
-        return scaleOrientation;
-    }
-
-
-    public void Set_rotation(string[] _input)
-    {
-        rotation = _input;
-    }
-    public string[] Get_rotation()
-    {
-        return rotation;
-    }
-
-
-    public void Set_def(string _input)
-    {
-        def = _input;
-    }
-    public string Get_def()
-    {
-        return def;
-    }
+    public void Set_rotation(string[] _input) { rotation = _input; }
+    public string[] Get_rotation() { return rotation; }
 
 
 
-
-
-
-
+    public void Set_def(string _input) { def = _input; }
+    public string Get_def() { return def; }
 
 
 

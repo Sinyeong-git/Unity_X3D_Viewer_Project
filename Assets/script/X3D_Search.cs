@@ -5,15 +5,24 @@ using System.Xml;
 
 public class X3D_Search : MonoBehaviour
 {
-    //공백자르기용
-    [HideInInspector]
-    public char sp = ' ';
+    #region 맴버 변수 선언
+    //공백 자르기용
+    private char sp;
+    private List<X3D_Obj_Transform> X3D_Obj_Transform;
+    #endregion
 
-    //처음 Shape문 걸러내기위한 key
-    public bool first_search = true;
+    #region 이니셜라이저
+    public void Initialize()
+    {
+        X3D_Obj_Transform = new List<X3D_Obj_Transform>();
+        sp = ' ';
+    }
+    #endregion
 
-    public List<X3D_Obj_Transform> X3D_Obj_Transform = new List<X3D_Obj_Transform>();
-
+    public void Start()
+    {
+        Initialize();
+    }
 
     public List<X3D_Obj_Transform> StartSearch(XmlNode _xmlNode)
     {
@@ -28,15 +37,7 @@ public class X3D_Search : MonoBehaviour
     private void Search(XmlNode _parentNode)
     {
 
-        Debug.Log("노드 : " + _parentNode.Name);
-
-
-        //Debug.Log("trasnform.count : " + X3D_Obj_Transform.Count);
-
-        
-        if (X3D_Obj_Transform.Count > 0)
-            Debug.Log("X3D_Obj_Shape.Count = " + X3D_Obj_Transform[X3D_Obj_Transform.Count - 1].Get_X3D_Obj_Shape_Count());
-        
+        //Debug.Log("노드 : " + _parentNode.Name);
 
 
         //<Transform> root의 transform 값 받아오는 처리

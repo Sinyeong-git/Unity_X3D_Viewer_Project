@@ -5,60 +5,26 @@ using UnityEngine;
 public class X3D_Obj_Shape
 {
 
-    //reStruct
     string shapeType;
-    
     List<Vector3> corrdinatePoint;
-
     List<int> corrdinateIndex;
 
+    public void Set_corrdinatePoint() { corrdinatePoint = new List<Vector3>(); }
+    public void Add_corrdinatePoint(Vector3 _input) { corrdinatePoint.Add(_input); }
+    public List<Vector3> Get_corrdinatePoint() { return corrdinatePoint; }
 
-    public void Set_corrdinatePoint()
-    {
-        corrdinatePoint = new List<Vector3>();
-    }
+    public void Set_corrdinateIndex() { corrdinateIndex = new List<int>(); }
+    public void Add_corrdinateIndex(int _input) { corrdinateIndex.Add(_input); }
+    public List<int> Get_corrdinateIndex() { return corrdinateIndex; }
 
-    public void Add_corrdinatePoint(Vector3 _input)
-    {
-        corrdinatePoint.Add(_input);
-    }
-
-    public List<Vector3> Get_corrdinatePoint()
-    {
-        return corrdinatePoint;
-    }
+    public void Set_shapeType(string _input) { shapeType = _input; }
+    public string Get_shapeType() { return shapeType; }
 
 
 
 
 
-    public void Set_corrdinateIndex()
-    {
-        corrdinateIndex = new List<int>();
-    }
 
-    public void Add_corrdinateIndex(int _input)
-    {
-        corrdinateIndex.Add(_input);
-    }
-
-    public List<int> Get_corrdinateIndex()
-    {
-        return corrdinateIndex;
-    }
-
-
-
-
-    public void Set_shapeType(string _input)
-    {
-        shapeType = _input;
-    }
-
-    public string Get_shapeType()
-    {
-        return shapeType;
-    }
 
 
 
