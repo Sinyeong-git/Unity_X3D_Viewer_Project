@@ -8,7 +8,7 @@ public class X3D_Obj_Transform
     //Obj_Shape 리스트
     private List<X3D_Obj_Shape> X3D_Obj_Shape = new List<X3D_Obj_Shape>();
 
-    //mesh형식 정상화를 위한 변수
+    //mesh 자료값 변수들
     string[] translation;
     string[] scale;
     string scaleOrientation;
